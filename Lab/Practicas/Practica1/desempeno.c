@@ -260,7 +260,6 @@ void main(int argc, char **argv)
     int n, m; //Renglones y columnas
     fscanf(entrada,"%d %d", &n, &m);
     float **tabla = lee_archivo(entrada, n, m);
-    fclose(entrada);
     float *media_geo = media_geometrica(tabla,n,m);
     float *media_arit = media_aritmetica(tabla,n,m);
     if (rend)
