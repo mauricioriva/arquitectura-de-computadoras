@@ -1,0 +1,134 @@
+\documentclass[14pt,letterpaper,fleqn]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[spanish,es-nodecimaldot]{babel}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{multicol}
+\usepackage{graphicx}
+\usepackage{cancel}
+
+\usepackage[dvipsnames]{xcolor}
+\usepackage[most]{tcolorbox}
+
+\usepackage{tabu}
+
+\usepackage{pgfplots}
+\pgfplotsset{width=10cm,compat=1.9}
+
+\usepackage{mathtools}
+\usepackage{tikz}
+\usetikzlibrary{trees,positioning}
+
+\usepackage[top=1in, bottom=1in, left=1in, right=1in]{geometry}
+
+
+\begin{document}
+
+\begin{titlepage}
+    \centering
+
+    {\scshape\LARGE Universidad Nacional Autónoma de México \par}
+
+    \vspace{1cm}
+    {\scshape\Large Facultad de ciencias\par}
+    \vspace{1.5cm}
+
+    \begin{center}
+        \includegraphics[scale=.1]{../../assets/img/logo.png}
+    \end{center}
+
+    \vspace{.8 cm}
+
+    {\LARGE Tarea  03 : \par}
+    {\huge\bfseries Organización y Arquitectura de Computadoras \par}
+
+    \vspace{0.5cm}
+    \large{\itshape{Martin Felipe Espinal Cruces }} \small{ - 316155362 } \\ \vspace{0.3cm}
+   
+    \vfill
+
+    Trabajo presentado como parte del curso de
+    \textbf{Organizacion y Arquitectura}
+    impartido por el profesor \textbf{	José de Jesús Galaviz Casas }. \par
+    \vspace{0.1cm}
+\end{titlepage}
+
+    \begin{enumerate}
+    
+        %Ejercicio 1%
+        \item \textbf{¿Cuáll es el esquema general de la arquitectura de Von Neumann?}
+        \begin{center}
+                \includegraphics[scale=.7]{../../assets/img/neumann.jpg}
+            \end{center}
+		%Ejercicio 2
+        \item \textbf{¿Cuáles los niveles en los cuales se clasifican los lenguales de programación, y menciona un ejemplo de cada uno.}
+        \\Los leguajes de programación se clasifican en tres niveles, alto, medio bajo nivel.\\
+        En el bajo nivel, el lenguaje que se utiliza para realizar las instrucciones solicitadas se encuentran en binario; un ejemplo de lenguaje de programación es ensamblador.\\
+        El en nivel medio, el lenguaje es un poco más abstracto que en el nivel anterior, sin embargo se preservan ciertas caracteristícas del lenguaje de máquina como ciertas instrucciones; un ejemplo de lenguaje de lenguaje de programación en este nivel es C.\\
+        Finalmente tenemos el nivel alto, en donde el lenguaje utilizado para realizar las instrucciones necesarias se encuentran en una sintáxis más familiar a nuestra forma de comunicarnos; un ejemplo de lenguaje de programación en este nivel es Python.
+        
+        %Ejercicio 3%
+        \item \textbf{Supon que el método M cuenta con el 30\% del tiempo de la ejecución de un programa. Sea $s'_n$ el sppedup con n procesos. Tu jefe te dice que debes duplicar este speedup: la versión nueva del programa debe tener un speedup $s_n \geq  2 * s'_n$. Tu buscas a un programador para remplazar M con una versión mejorada, k veces más rápida. ¿Qué valor de k es requerido? (Hint: para sacar el speedup usa la ley de Amdalh)}
+        \\Para comenzar debemos sacar la ganancia neta la cual se calcula de la siguiente manera:
+
+            $$g = \frac{Tiempo_{sin}}{Tiempo_{con}} \Rightarrow{}
+             g = \frac{70\%}{30\%}  = 2.33$$
+        Ahora sustituimos en la ley de Amdalh obteniendo lo siguiente
+        \begin{equation*}
+            \frac{1}{(1-.3)+\frac{.3}{2.33}} = \frac{1}{.7+\frac{.3}{2.3}}
+            =  \frac{1}{.7+1.2857} = \frac{1}{.8285} =1.2070
+        \end{equation*}
+        Dado que queremos mejorar la ganancia bruta k veces de tal manera que obtengamos un speedup $\geq 2 * s'_n$, tendremos que:
+            \begin{equation}
+                \begin{split}
+                \frac{1}{(1-F)+\frac{F}{2.33}} & = (1.2070) * 2\\
+                 & = 2.4136 \\
+                 (1-F) + \frac{F}{2.33} & = \frac{1}{2.414} \\
+                 1 - F + 0.4291F & = 0.4142 \\
+                 0.4291F - F & = 0.4142 - 1 \\
+                 -0.5709F & = -0.5857\\
+                 F & = \frac{-0.5857}{-0.5709}\\
+                 & = 1.0260
+                \end{split}
+            \end{equation}
+        Dado que el speedup resultante es el requerido sólo basta ver que:
+        \begin{equation*}
+            \begin{split}
+                F*k & = 1.0260\\
+                (.3) * k & = 1.0260\\
+                k & = \frac{1.0260}{.3}\\
+                k & = 3.42
+            \end{split}{}
+        \end{equation*}{}
+        Por lo tanto el valor de k requerido es de 3.42
+        %Ejercicio 4%
+        \item \textbf{Supón que el método M se puede acelerar tres veces. ¿Qué fracción de todo el tiempo de ejecución debe contar M para que se pueda doblar el speedup del programa?}
+        \\El problema nos indica que debemos encontrar el valor de la ganancia bruta cuando g = 3 y el speedup el = 2*(1.0259), entonces:
+            \begin{equation*}
+                \begin{split}
+                \frac{1}{(1-F)+\frac{F}{3}} & = (1.0260) * 2\\
+                 & = 2.4136 \\
+                 (1-F) + \frac{F}{3} & = \frac{1}{2.052} \\
+                 1 - F + \frac{F}{3} & = 0.4873 \\
+                 -\frac{2F}{3} & = 0.4873 - 1 \\
+                  & = \\
+                 -2F & = \frac{−0.5126}{3}\\
+                 & = −1.5378\\
+                 F &= 0.7689
+                \end{split}
+            \end{equation*}
+        %Ejercicio 5%
+        \item \textbf{De las siguientes expresiones, minimízalas con álgebra booleana y comprueba tu resultado usando mapa de Karanauht}
+        \begin{enumerate}
+            %Ejercicio 5.a%
+            \item \textbf{$F(x_0, x_1, x_2) = \bar{x_0}\bar{x_1}\bar{x_2} + \bar{x_0}\bar{x_1}x_2 + x_0\bar{x_1}\bar{x_2} + \bar{x_0}x_1x_2 + \bar{x_0}\bar{x_1}x_2 + x_0x1_x_2$}
+            \\
+            
+            %Ejercicio 5.b%
+            \item \textbf{$F(x_0, x_1, x_2, x_3) = \bar{x_0}\bar{x_1}\bar{x_2}\bar{x_3} + \bar{x_0}\bar{x_1}x_2\bar{x_3} + x_0\bar{x_1}\bar{x_2}\bar{x_3} + \bar{x_0}x_1x_2\bar{x_3} + \bar{x_0}x_1\bar{x_2}\bar{x_3} + \bar{x_0}\bar{x_1}\bar{x_2}x_3 + \bar{x_0}\bar{x_1}x_2x_3 + x_0\bar{x_1}\bar{x_2}x_3 + \bar{x_0}x_1x_2x_3 + x_0x_1x_2x_3$}
+            
+        \end{enumerate}
+        
+    \end{enumerate}
+\end{document}
