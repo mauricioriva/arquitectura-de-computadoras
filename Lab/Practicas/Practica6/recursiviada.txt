@@ -1,0 +1,21 @@
+fun sumaArr(arr, larr)
+	total = 0
+	i = 0
+	while(i<larr)
+		total = total + arr[i]
+		i = i + 1
+	return total
+	
+fun powrec(x,n)
+	if(n == 0)
+		return 1
+	if(n == 1)
+		return x
+	if(esPar(n))
+		exp = n/2
+		aux = pow(x,exp)
+		return aux * aux
+	exp = n - 1
+	aux = pow(x,exp)
+	return x * aux
+	
